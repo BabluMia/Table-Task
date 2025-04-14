@@ -2,7 +2,7 @@
   <DxPopup
     :visible="visible"
     :width="900"
-    :height="650"
+    :height="690"
     :show-title="true"
     :title="type === 'edit' ? 'Edit Attendance ' : 'Add Attendance '"
     :drag-enabled="false"
@@ -114,10 +114,9 @@
               class="w-full"
             />
           </div>
-        </div>
 
-        <!-- Action Buttons -->
-        <div class="flex justify-end gap-3 mt-8 mb-14">
+          <!-- Action Buttons -->
+        <div class="flex justify-center mb-6 gap-4 ">
           <DxButton
             text="Save"
             type="default"
@@ -134,6 +133,9 @@
             :width="120"
           />
         </div>
+        </div>
+
+        
       </form>
     </template>
   </DxPopup>
@@ -257,7 +259,7 @@ const saveData = () => {
   );
 
   emits("save", {
-    id: props.initialFormData?.id, // Pass the ID for edit operations
+    id: typeof props.initialFormData?.id === "number" ? props.initialFormData.id : undefined,
     identification_number: form.value.notes,
     employee_name: form.value.reason,
     date_time_get_to_work: formatDate(form.value.newStartDate || now),
@@ -304,7 +306,7 @@ function determineNoncompliance(reasonType: number, startDate: Date) {
 
 <style scoped>
 .attendance-modal :deep(.dx-popup-content) {
-  padding: 20px;
+  padding: 30px;
   background-color: #f9fafb; /* Neutral off-white background for the content area */
 }
 
@@ -327,15 +329,21 @@ function determineNoncompliance(reasonType: number, startDate: Date) {
   background-color: #28a745; /* Green background for primary actions */
   color: #ffffff; /* Ensuring text is easily readable */
   border-radius: 0.5rem; /* Consistent rounded corners for all buttons */
-  padding: 10px 16px; /* Adequate padding for button text */
+  padding: 12px 20px; /* More padding for button text */
+  font-weight: 500; /* Slightly bolder text */
+  transition: all 0.2s ease; /* Smooth transition for hover effects */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .attendance-modal :deep(.dx-button):hover {
   background-color: #218838; /* Slightly darker green on hover for feedback */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
 }
 
 .attendance-modal :deep(.dx-button):active {
   background-color: #1e7e34; /* Even darker for active state */
+  transform: translateY(0); /* Reset the transform when clicked */
 }
 
 .attendance-modal :deep(.dx-fileuploader-input-wrapper) {
@@ -364,8 +372,9 @@ function determineNoncompliance(reasonType: number, startDate: Date) {
 
 .action-buttons {
   display: flex;
-  justify-content: flex-end; /* Align action buttons to the right */
-  gap: 10px; /* Space between buttons */
-  padding-top: 20px; /* Extra space above the buttons */
+  justify-content: center; /* Center action buttons */
+  gap: 15px; /* Increased space between buttons */
+  padding-top: 30px; /* Extra space above the buttons */
+  padding-bottom: 30px; /* Extra space below the buttons */
 }
 </style>
