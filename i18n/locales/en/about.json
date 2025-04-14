@@ -1,0 +1,25 @@
+{
+  "about": {
+    "title": "this is about page",
+    "title1": "Attendence Table",
+    "title2": "Attendance Record Search",
+    "title3": "Add Attendance ",
+    "name": "Employee Name",
+    "id": "Employee ID",
+    "Record_Display": "Record Display ",
+    "search": "Search",
+    "reset": "Reset"
+  },
+  "add": {
+    "id": "Employee ID",
+    "name": "Employee Name",
+    "tor": "Type of Reason",
+    "gtw": "Go To Work",
+    "lo": "Left Office",
+    "reent": "Re-entered",
+    "bctw": "Back to Work",
+    "Attachment": "Attachment",
+    "status": "Status",
+    "action": "Action"
+  }
+}
